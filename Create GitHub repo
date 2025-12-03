@@ -1,0 +1,36 @@
+pipeline {
+  agent any
+  stages {
+    stage('Checkout') {
+      steps {
+        checkout scm
+      }
+    }
+    stage('Build') {
+      steps {
+        echo 'Building...'
+        sh 'echo "Simulated build step"'
+      }
+    }
+    stage('Test') {
+      steps {
+        echo 'Testing...'
+        sh 'echo "Simulated tests passed"'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        echo 'Deploying...'
+        sh 'echo "Simulated deploy complete"'
+      }
+    }
+  }
+  post {
+    success {
+      echo 'Pipeline completed successfully!'
+    }
+    failure {
+      echo 'Pipeline failed.'
+    }
+  }
+}
